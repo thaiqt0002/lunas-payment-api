@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  e-commerce-user-api-primary:
+    container_name: e-commerce-api-primary
+    image: e-commerce-api
+    env_file:
+      - .env
+    environment:
+    build:
+      dockerfile: ./Dockerfile
+    command: node dist/src/main.js
+    networks:
+      mysql_e-commerce:
+        ipv4_address: 10.0.1.2
+
+
+networks:
+  mysql_e-commerce:
+    external: true
